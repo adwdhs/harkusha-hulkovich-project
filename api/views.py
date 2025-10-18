@@ -38,7 +38,7 @@ class Update(View):
 
         return redirect('details', pk=pk)
     
-    
+
 class Add(View):
     def get(self, request): 
        
@@ -76,4 +76,9 @@ class Delete(View):
         product.delete()
 
         return redirect('home')
-        
+    
+
+
+
+      
+      
