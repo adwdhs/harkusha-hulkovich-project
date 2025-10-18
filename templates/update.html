@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Update Product with ID: {{product_id}}
+    <form method="POST">
+        {% csrf_token %}
+        <label>Name</label>
+        <input name="name", type="text" value="{{product_name}}">
+        <label>Price</label>
+        <input name="price", type="number" value="{{product_price}}">
+        <label>Description</label>
+        <input name="description", type="text" value="{{product_description}}">
+        <button type="submit">Update</button>
+    </form>
+    <a href="{% url 'home' %}">Back</a>
+    
+
+</body>
+</html>
