@@ -15,6 +15,10 @@
         <input name="price", type="number" value="{{product_price}}">
         <label>Description</label>
         <input name="description", type="text" value="{{product_description}}">
+        <label>Barcode</label>
+        <input name="barcode", type="number" value="{{product_barcode}}">
+        <label>VatRate</label>
+        <input name="vatRate", type="number" value="{{product_vatRate}}">
         <button type="submit">Update</button>
     </form>
     <a href="{% url 'home' %}">Back</a>
