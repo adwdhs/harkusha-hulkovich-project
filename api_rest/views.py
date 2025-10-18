@@ -40,14 +40,18 @@ class Add(View):
         name = data.get("name")
         price = data.get("price")
         description = data.get("description")
+        vatRate = data.get("vatRate")
+        barcode = data.get("barcode")
 
-        if not name or not price:
-            return JsonResponse({"error": "Name and price are required."}, status=400)
+        if not name or not price or not barcode:
+            return JsonResponse({"error": "Name, barcode and price are required."}, status=400)
 
         product = Product.objects.create(
             name=name,
             price=price,
-            description=description
+            description=description,
+            barcode=barcode,
+            vatRate=vatRate
         )
         return JsonResponse(model_to_dict(product), status=201)
 
@@ -62,6 +66,8 @@ class Update(View):
         product.name = data.get("name", product.name)
         product.price = data.get("price", product.price)
         product.description = data.get("description", product.description)
+        product.vatRate = data.get("vatRate", product.vatRate)
+        product.barcode = data.get("barcode", product.barcode)
         product.save()
 
         return JsonResponse(model_to_dict(product), status=200)

@@ -20,6 +20,8 @@ class Update(View):
             "product_name": product.name,
             "product_price": product.price,
             "product_description": product.description,
+            "product_barcode": product.barcode,
+            "product_vatRate": product.vatRate,
         }
 
         return render(request, "update.html", context)
@@ -30,10 +32,14 @@ class Update(View):
         name = request.POST.get("name")
         price = request.POST.get("price")
         description = request.POST.get("description")
+        barcode = request.POST.get("barcode")
+        vatRate = request.POST.get("vatRate")
 
         product.name = name
         product.price = price
         product.description = description
+        product.vatRate = vatRate
+        product.barcode = barcode
         product.save()
 
         return redirect('details', pk=pk)
@@ -51,7 +57,9 @@ class Add(View):
             name = request.POST.get("name")
             price = request.POST.get("price")
             description = request.POST.get("description")
-            product = Product.objects.create(name=name, price=price, description=description)
+            barcode = request.POST.get("barcode")
+            vatRate = request.POST.get("vatRate")
+            product = Product.objects.create(name=name, price=price, description=description, barcode=barcode, vatRate=vatRate)
             id = product.id
             return redirect('details', pk=id)
         return render(request, "add.html")    
@@ -66,6 +74,8 @@ class Details(View):
             "product_name": product.name,
             "product_price": product.price,
             "product_description": product.description,
+            "product_barcode": product.barcode,
+            "product_vatRate": product.vatRate,
         }
 
         return render(request, "details.html", context)

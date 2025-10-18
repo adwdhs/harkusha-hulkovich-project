@@ -5,3 +5,5 @@ class Product(models.Model):
     price = models.IntegerField(null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
+    barcode = models.IntegerField(null=True, blank=True)
+    vatRate = models.IntegerField(null=True, blank=True)
