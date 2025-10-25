@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div>
+    <h1>Login into you account</h1>
+    <div>
+        <form method="POST">
+
+        
+            {% csrf_token %}
+        <label for="username">Enter your username</label>
+        <input name="username" id="username">
+        <label for="password">Enter your password</label>
+        <input name="password" id="password" type="password">
+        {% if message %}
+        {{message}}
+
+        {% endif %}
+        <button type="submit">Login</button>
+        </form><br>
+
+        <label for="">Don't have an account? Then register one</label>
+        <a href="{% url 'register' %}">Register</a>
+    </div>
+</div>
+{% endblock content %}

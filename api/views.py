@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import Product
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class Index(View): 
+class Home(View):
+    def get(self, request):
+        return render(request, "home.html")
+    
+class Index(LoginRequiredMixin, View):    
     def get(self, request): 
         products = Product.objects.all()
         context = {
@@ -12,7 +17,7 @@ class Index(View):
 
         return render(request, "index.html", context)
 
-class Update(View):
+class Update(LoginRequiredMixin, View):
     def get(self, request, pk): 
         product = Product.objects.get(id=pk)
         context = {
@@ -45,7 +50,7 @@ class Update(View):
         return redirect('details', pk=pk)
     
 
-class Add(View):
+class Add(LoginRequiredMixin, View):
     def get(self, request): 
        
 
@@ -66,7 +71,7 @@ class Add(View):
     
 
 
-class Details(View):
+class Details(LoginRequiredMixin, View):
     def get(self, request, pk): 
         product = Product.objects.get(id=pk)
         context = {
@@ -80,7 +85,7 @@ class Details(View):
 
         return render(request, "details.html", context)
     
-class Delete(View):
+class Delete(LoginRequiredMixin, View):
     def get(self, request, pk): 
         product = Product.objects.get(id=pk)
         product.delete()

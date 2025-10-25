@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div>
+    <h1>Create new account</h1>
+    <div>
+        <form method="POST">
+
+        
+            {% csrf_token %}
+        <label for="username">Enter your username</label>
+        <input name="username" id="username">
+        <label for="password">Enter your password</label>
+        <input name="password1" id="password1" type="password">
+        <label for="password">Confirm your password</label>
+        <input name="password2" id="password2" type="password">
+        <label>Choose type of account you wanna create</label>
+        <select name="account_type">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        {% if message %}
+        {{message}}
+
+        {% endif %}
+        <button type="submit">Create an Account</button>
+        </form><br>
+        {% if err_msg %}
+        <h1>{{err_msg}}</h1>
+        <br>
+        {% endif %}
+        <label for="">Already have an account? Then login into it</label>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+</div>
+{% endblock content %}
