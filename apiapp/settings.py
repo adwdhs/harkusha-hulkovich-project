@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://harkusha-hulkovich-api-production.up.railway.app",
-    ""https://vivacious-commitment-ttt.up.railway.app"
+    "https://vivacious-commitment-ttt.up.railway.app"
 ]
 # Application definition
 
